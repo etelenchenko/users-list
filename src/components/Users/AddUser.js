@@ -3,13 +3,14 @@ import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
 import {useState} from "react";
 
-function AddUser() {
+function AddUser(props) {
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
 
   const addUserHandler = (event) => {
     event.preventDefault();
     if (enteredUsername.trim().length > 0 && enteredAge.trim().length > 0 && +enteredAge > 0) {
+      props.onAddUser(enteredUsername, enteredAge);
       setEnteredUsername('');
       setEnteredAge('');
     }
